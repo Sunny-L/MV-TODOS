@@ -7,4 +7,4 @@ require('http').createServer(function (request, response) {
     }).resume();
 }).listen(8001);
 
-console.log('server listen port 9001... ')
+console.log('server listen port 8001... ')
