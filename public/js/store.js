@@ -19,7 +19,7 @@
                     dataType:'json',
                     async:false,
                     success:function(data){
-                        for(let key in data){
+                        for(var key in data){
                             data[key].isEdit = false;
                         }
                         dataList = data;

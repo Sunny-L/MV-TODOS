@@ -34,7 +34,7 @@ Vue.component('grid',{
             this.data[index].isEdit = false;
         },
         handleAdd:function(){
-            if(this.newGoods.trim()){
+            if(this.newGoods){
                 this.data.push(this.newGoods);
                 $('#myModal').modal('hide')
             }
