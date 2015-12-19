@@ -5,11 +5,12 @@
 
     exports.storeService =  {
         fetch:function(){
-            var localGoods = JSON.parse(localStorage.getItem(STORE_EKEY));
+            var localGoods = localStorage.getItem(STORE_EKEY);
+            localGoods = JSON.parse(localGoods||'[]');
             var dataList = [];
             if(localGoods.length>0){
-                for(let key in localGoods){
-                    localGoods[key].isEdit = false;
+                for(var tmp in localGoods){
+                    localGoods[tmp].isEdit = false;
                 }
                 dataList = localGoods;
             }else{
