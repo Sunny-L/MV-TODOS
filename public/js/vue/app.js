@@ -57,11 +57,6 @@ var demo = new Vue({
         girdData:storeService.fetch()
     },
     methods:{
-        handleUpdate:function(index){
-            //this.data
-        },
-        handleDelete:function(goods){
-        }
     }
 
 })

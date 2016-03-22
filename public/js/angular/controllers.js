@@ -2,12 +2,19 @@
 var controllers = angular.module('controllers',[]);
 
 controllers.controller('listCtrl',['$scope','$filter',function($scope,$filter){
+    $scope.list = storeService.fetch();
+
     var orderBy = $filter('orderBy');
     $scope.newGoods = {
         title:'',
         price:0,
         volume:0
     }
+    $scope.sortKeys = {
+        'price':false,
+        'volume':false
+    }
+
     $scope.handleUpdate = function(index){
         $scope.list[index].isEdit = true;
     }
@@ -27,16 +34,12 @@ controllers.controller('listCtrl',['$scope','$filter',function($scope,$filter){
         }
         $('#myModal').modal('hide')
     }
-    $scope.$watch('list', function(newValue, oldValue) {
-        storeService.save(newValue);
-    },true);
-    $scope.list = storeService.fetch();
     $scope.sort = function(predicate){
         $scope.sortKeys[predicate] = !$scope.sortKeys[predicate]
         $scope.list = orderBy($scope.list,predicate,$scope.sortKeys[predicate]);
     }
-    $scope.sortKeys = {
-        'price':false,
-        'volume':false
-    }
+    $scope.$watch('list', function(newValue, oldValue) {
+        storeService.save(newValue);
+    },true);
+
 }]);
